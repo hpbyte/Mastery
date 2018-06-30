@@ -26,13 +26,18 @@ export default class Home extends Component {
                 <ImageBackground source={require('../../assets/back.png')} style={Style.flex1}>
                     <Header noShadow transparent>
                         <Left style={Style.flex1}>
-                            <Ionicons name={user} size={27} color="#fff" />
+                            <Button transparent
+                                onPress={() => this.props.navigation.navigate('Profile')}>
+                                <Ionicons name={user} size={27} color="#fff" />
+                            </Button>
                         </Left>
                         <Body style={Style.flexCenter}>
                             <Title style={Style.title}>Mastery</Title>
                         </Body>
                         <Right style={Style.flex1}>
-                            <Ionicons name={search} size={27} color="#fff" />
+                            <Button transparent>
+                                <Ionicons name={search} size={27} color="#fff" />
+                            </Button>
                         </Right>
                     </Header>
                     <Bar />

@@ -6,6 +6,7 @@ import { Footer, FooterTab, Button, Text } from 'native-base'
 import Signin from './auth/signin'
 import Signup from './auth/signup'
 import Home from './home'
+import Profile from './profile'
 import Style from './style'
 
 const Auth = createBottomTabNavigator(
@@ -32,9 +33,20 @@ const Auth = createBottomTabNavigator(
     }
 )
 
+const Main = createStackNavigator(
+    {
+        Home: { screen: Home },
+        Profile: { screen: Profile }
+    },
+    {
+        headerMode: 'none',
+        initialRouteName: 'Home'
+    }
+)
+
 export const createRootNavigator = (signedIn = false) => createSwitchNavigator(
     {
-        SignedIn: { screen: Home },
+        SignedIn: { screen: Main },
         SignedOut: { screen: Auth }
     },
     {

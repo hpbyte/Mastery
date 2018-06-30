@@ -7,6 +7,10 @@ export default {
         justifyContent: 'center',
         alignItems: 'center'
     },
+    itemCenter: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     backGreen: {
         backgroundColor: '#43A047'
     },

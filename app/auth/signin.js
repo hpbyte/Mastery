@@ -13,11 +13,31 @@ export default class Signin extends Component {
     constructor(props) {
         super(props)
         
-        this.state = { username: '', password: '' }
+        this.state = { username: '', password: '', token: null }
+
+        this._getToken = this._getToken.bind(this)
+    }
+
+    _getToken() {
+        const uname = this.state.username
+        const paswd = this.state.password
+
+        fetch('http://mastery-dev.ap-southeast-1.elasticbeanstalk.com/api/questions/', {
+            method: 'POST',
+            body: JSON.stringify({
+                username: uname,
+                password: paswd
+            })
+        })
+        .then(resp => resp.json())
+        .then(respjson => {
+            this.setState({ token: respjson })
+        })
+        .catch(err => { alert(err) })
     }
 
     _signin = () => {
-        alert('Signed In !')
+        
     }
 
     render(){
