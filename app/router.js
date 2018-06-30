@@ -6,6 +6,7 @@ import { Footer, FooterTab, Button, Text } from 'native-base'
 import Signin from './auth/signin'
 import Signup from './auth/signup'
 import Home from './home'
+import Style from './style'
 
 const Auth = createBottomTabNavigator(
     {
@@ -17,12 +18,12 @@ const Auth = createBottomTabNavigator(
         tabBarComponent: props => {
             return(
                 <Footer>
-                    <FooterTab>
+                    <FooterTab style={Style.backGreen}>
                         <Button onPress={() => props.navigation.navigate('SignIn')}>
-                            <Text>SignIn</Text>
+                            <Text style={Style.white}>SignIn</Text>
                         </Button>
                         <Button onPress={() => props.navigation.navigate('SignUp')}>
-                            <Text>SignUp</Text>
+                            <Text style={Style.white}>SignUp</Text>
                         </Button>
                     </FooterTab>
                 </Footer>

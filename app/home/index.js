@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { ImageBackground } from 'react-native';
+import {
+    Container, Header, Left, 
+} from 'native-base'
+import Style from '../style'
 
 export default class Home extends Component {
     render(){
         return(
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-                <Text>from home</Text>
-            </View>
+            <Container>
+                <ImageBackground source={require('../../assets/back.png')} style={Style.flex1}>
+                    <Header>
+
+                    </Header>
+                </ImageBackground>
+            </Container>
         )
     }
 }
