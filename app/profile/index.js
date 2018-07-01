@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { TextInput, Keyboard, TouchableWithoutFeedback } from 'react-native';
 import {
-    Container, Header, Left, Body, Right, Title, Button, Thumbnail, Card, CardItem, Text
+    Container, Header, Left, Body, Right, Title, Button, Thumbnail, 
+    Card, CardItem, Text, Item, Input
 } from 'native-base'
 import { Grid, Row, Col } from 'react-native-easy-grid'
 import { Ionicons } from '@expo/vector-icons'
@@ -38,7 +39,29 @@ export default class Profile extends Component {
                     <Row size={70}>
                         <Card>
                             <CardItem>
-                                <Text>Hello</Text>
+                                <Item regular>
+                                    <Input placeholder='Name' />
+                                </Item>
+                            </CardItem>
+                            <CardItem>
+                                <Item regular>
+                                    <Input placeholder='Email' />
+                                </Item>
+                            </CardItem>
+                            <CardItem>
+                                <Item regular>
+                                    <Input placeholder='Address' />
+                                </Item>
+                            </CardItem>
+                            <CardItem>
+                                <Item regular>
+                                    <Input placeholder='School' />
+                                </Item>
+                            </CardItem>
+                            <CardItem style={Style.flex1}>
+                                <Button rounded style={[Style.backGreen, {alignSelf: 'center'}]}>
+                                    <Text style={Style.white}>Change</Text>
+                                </Button>
                             </CardItem>
                         </Card>
                     </Row>

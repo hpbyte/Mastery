@@ -17,11 +17,19 @@ export default class Lead extends Component {
     constructor(props) {
         super(props)
 
+        this.state = { leaders: [] }
+
         this.randomNum.bind(this)
     }
 
     randomNum() {
         return Math.floor(Math.random() * 100)
+    }
+
+    async componentDidMount() {
+        const response = await fetch('http://mastery-dev.ap-southeast-1.elasticbeanstalk.com/api/learners/')
+        const json = await response.json()
+        this.setState({ leaders: json })
     }
 
     render(){
@@ -47,16 +55,16 @@ export default class Lead extends Component {
                     <Bar />
                     <Content padder style={Style.flex1}>
                         <List 
-                            dataArray={dataArr}
+                            dataArray={this.state.leaders}
                             renderRow={(item) => {
                                 return(
-                                    <ListItem avatar>
+                                    <ListItem avatar style={{ margin: 5 }}>
                                         <Left>
                                             <Thumbnail source={{ uri: `https://randomuser.me/api/portraits/thumb/women/${this.randomNum()}.jpg` }} />
                                         </Left>
                                         <Body style={{ borderBottomWidth: 0 }}>
-                                            <Text style={Style.green}>Kumar Pratik</Text>
-                                            <Text note style={Style.white}>Doing what you like will always keep you happy . .</Text>
+                                            <Text style={Style.green}>{item.name}</Text>
+                                            <Text note style={Style.white}>Gained points: {item.points}</Text>
                                         </Body>
                                     </ListItem>
                                 )

@@ -10,7 +10,10 @@ import Tour from './tournament'
 import Lead from './leaderboard'
 import Profile from './profile'
 import Ques from './questions'
+import Answer from './tournament/answer'
 import Style from './style'
+import Ionicons from '@expo/vector-icons/Ionicons';
+import { play, podi, flag } from './partials/icons'
 
 const Auth = createBottomTabNavigator(
     {
@@ -48,15 +51,18 @@ const Menu = createBottomTabNavigator(
         tabBarComponent: props => {
             return(
                 <Footer>
-                    <FooterTab style={Style.backGreen}>
-                        <Button onPress={() => props.navigation.navigate('Solo')}>
+                    <FooterTab style={{ backgroundColor: '#000' }}>
+                        <Button vertical onPress={() => props.navigation.navigate('Solo')}>
+                            <Ionicons name={play} size={24} color="#fff" />
                             <Text style={Style.white}>Practice</Text>
                         </Button>
-                        <Button onPress={() => props.navigation.navigate('Tour')}>
-                            <Text style={Style.white}>Tournament</Text>
+                        <Button vertical onPress={() => props.navigation.navigate('Tour')}>
+                            <Ionicons name={flag} size={24} color="#fff" />
+                            <Text style={Style.white}>Battle</Text>
                         </Button>
-                        <Button onPress={() => props.navigation.navigate('Lead')}>
-                            <Text style={Style.white}>Leaderboard</Text>
+                        <Button vertical onPress={() => props.navigation.navigate('Lead')}>
+                            <Ionicons name={podi} size={24} color="#fff" />
+                            <Text style={Style.white}>Ranks</Text>
                         </Button>
                     </FooterTab>
                 </Footer>
@@ -69,7 +75,8 @@ const Main = createStackNavigator(
     {
         Menu: { screen: Menu },
         Profile: { screen: Profile },
-        Ques: { screen: Ques }
+        Ques: { screen: Ques },
+        Answer: { screen: Answer }
     },
     {
         headerMode: 'none',
