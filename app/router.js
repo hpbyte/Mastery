@@ -9,11 +9,12 @@ import Solo from './solo'
 import Tour from './tournament'
 import Lead from './leaderboard'
 import Profile from './profile'
+import Learn from './learn'
 import Ques from './questions'
 import Answer from './tournament/answer'
 import Style from './style'
 import Ionicons from '@expo/vector-icons/Ionicons';
-import { play, podi, flag } from './partials/icons'
+import { play, podi, flag, book } from './partials/icons'
 
 const Auth = createBottomTabNavigator(
     {
@@ -43,7 +44,8 @@ const Menu = createBottomTabNavigator(
     {
         Solo: { screen: Solo },
         Tour: { screen: Tour },
-        Lead: { screen: Lead }
+        Lead: { screen: Lead },
+        Learn: { screen: Learn }
     },
     {
         initialRouteName: 'Solo',
@@ -55,6 +57,10 @@ const Menu = createBottomTabNavigator(
                         <Button vertical onPress={() => props.navigation.navigate('Solo')}>
                             <Ionicons name={play} size={24} color="#fff" />
                             <Text style={Style.white}>Practice</Text>
+                        </Button>
+                        <Button vertical onPress={() => props.navigation.navigate('Learn')}>
+                            <Ionicons name={book} size={24} color="#fff" />
+                            <Text style={Style.white}>Learn</Text>
                         </Button>
                         <Button vertical onPress={() => props.navigation.navigate('Tour')}>
                             <Ionicons name={flag} size={24} color="#fff" />
