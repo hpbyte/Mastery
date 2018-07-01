@@ -9,7 +9,7 @@ import { user, search, info } from '../partials/icons'
 import Style from '../style'
 import Bar from '../partials/bar'
 
-export default class Home extends Component {
+export default class Solo extends Component {
     constructor(props) {
         super(props)
 
@@ -44,7 +44,8 @@ export default class Home extends Component {
                     <Content padder style={Style.flex1}>
                         <View style={{height: 50}} />
                         <Row>
-                            <TouchableOpacity style={[Style.mycard, Style.backBlue]}>
+                            <TouchableOpacity style={[Style.mycard, Style.backBlue]}
+                                onPress={() => this.props.navigation.navigate('Ques')}>
                                 <Button transparent style={Style.infoBtn}>
                                     <Ionicons name={info} size={27} color="#fff" />
                                 </Button>
@@ -55,7 +56,7 @@ export default class Home extends Component {
                             </TouchableOpacity>
                         </Row>
                         <Row>
-                            <TouchableOpacity style={[Style.mycard, Style.backGreen]}>
+                            <TouchableOpacity style={[Style.mycard, Style.backYellow]}>
                                 <Button transparent style={Style.infoBtn}>
                                     <Ionicons name={info} size={27} color="#fff" />
                                 </Button>
@@ -77,7 +78,7 @@ export default class Home extends Component {
                             </TouchableOpacity>
                         </Row>
                         <Row>
-                            <TouchableOpacity style={[Style.mycard, Style.backYellow]}>
+                            <TouchableOpacity style={[Style.mycard, Style.backIndi]}>
                                 <Button transparent style={Style.infoBtn}>
                                     <Ionicons name={info} size={27} color="#fff" />
                                 </Button>

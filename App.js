@@ -20,11 +20,11 @@ export default class App extends React.Component {
     this.setState({ loading: false })
   }
 
-  // componentDidMount() {
-  //   isSignedIn()
-  //     .then(res => this.setState({ signedIn: res }))
-  //     .catch(err => alert(err))
-  // }
+  componentDidMount() {
+    isSignedIn()
+      .then(res => this.setState({ signedIn: res }))
+      .catch(err => alert(err))
+  }
 
   render() {
     const { loading, signedIn } = this.state
@@ -33,7 +33,7 @@ export default class App extends React.Component {
       return <AppLoading />
     }
 
-    const Layout = createRootNavigator(true)
+    const Layout = createRootNavigator(signedIn)
 
     return <Layout />
   }

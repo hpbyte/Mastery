@@ -5,7 +5,8 @@ import {
 } from 'native-base'
 import { Grid, Row, Col } from 'react-native-easy-grid'
 import { Ionicons } from '@expo/vector-icons'
-import { back } from '../partials/icons'
+import { back, exit } from '../partials/icons'
+import { signedOut } from '../auth/check'
 import Style from '../style'
 import Bar from '../partials/bar'
 
@@ -22,7 +23,11 @@ export default class Profile extends Component {
                     <Body style={Style.flexCenter}>
                         <Title style={Style.white}>Profile</Title>
                     </Body>
-                    <Right style={Style.flex1} />
+                    <Right style={Style.flex1}>
+                        <Button transparent onPress={() => signedOut()}>
+                            <Ionicons name={exit} size={27} color="#fff" />
+                        </Button>
+                    </Right>
                 </Header>
                 <Bar />
                 <Grid>

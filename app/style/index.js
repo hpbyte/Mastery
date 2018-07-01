@@ -23,6 +23,9 @@ export default {
     backBlue: {
         backgroundColor: '#1e88e5'
     },
+    backIndi: {
+        backgroundColor: '#3949ab'
+    },
     backYellow: {
         backgroundColor: '#fdd835'
     },
@@ -31,6 +34,12 @@ export default {
     },
     white: {
         color: '#fff'
+    },
+    black: {
+        color: '#000'
+    },
+    green: {
+        color: '#43A047'
     },
     title: {
         color: '#fff',
@@ -57,5 +66,13 @@ export default {
         margin: 0,
         padding: 15,
         alignSelf: 'flex-end'
+    },
+    ques: {
+        color: '#fff', 
+        fontSize: 17, 
+        marginTop: 20, marginBottom: 20
+    },
+    anscard: {
+        marginTop: 10, marginBottom: 10
     }
 }

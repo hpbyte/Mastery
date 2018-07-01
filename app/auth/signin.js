@@ -6,6 +6,7 @@ import { Container, Button, Text } from 'native-base'
 import { Grid, Row, Col } from 'react-native-easy-grid'
 import { Ionicons } from '@expo/vector-icons'
 import { user, lock } from '../partials/icons'
+import { signedIn } from './check'
 import Style from '../style'
 import style from './style'
 
@@ -13,31 +14,38 @@ export default class Signin extends Component {
     constructor(props) {
         super(props)
         
-        this.state = { username: '', password: '', token: null }
-
-        this._getToken = this._getToken.bind(this)
+        this.state = { username: '', password: '' }
     }
 
-    _getToken() {
+    _onSignIn = () => {
         const uname = this.state.username
         const paswd = this.state.password
 
-        fetch('http://mastery-dev.ap-southeast-1.elasticbeanstalk.com/api/questions/', {
-            method: 'POST',
-            body: JSON.stringify({
-                username: uname,
-                password: paswd
-            })
-        })
-        .then(resp => resp.json())
-        .then(respjson => {
-            this.setState({ token: respjson })
-        })
-        .catch(err => { alert(err) })
-    }
-
-    _signin = () => {
-        
+        if(uname !== '' && paswd !== '') {
+            try{
+                fetch('http://mastery-dev.ap-southeast-1.elasticbeanstalk.com/auth/token/create/', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        username: uname,
+                        password: paswd
+                    }),
+                    cache: 'no-cache',
+                    headers: {
+                        'Cache-Control': 'no-cache',
+                        'content-type': 'application/json'
+                    }
+                })
+                .then((resp) => resp.json())
+                .then((respjson) => {
+                    signedIn(respjson.auth_token)
+                })
+                .catch(err => { alert(err) })
+            } catch(err) {
+                console.log(err)
+            }
+        } else {
+            alert('Please fill the fields!')
+        }
     }
 
     render(){
@@ -89,7 +97,7 @@ export default class Signin extends Component {
                             <Row size={4} />
                             <Row size={30} style={style.verticalCenter}>
                                 <Button rounded style={style.btn}
-                                    onPress={() => this._signin()}>
+                                    onPress={() => this._onSignIn()}>
                                     <Text style={style.txtLogin}>Login</Text>
                                 </Button>
                             </Row>

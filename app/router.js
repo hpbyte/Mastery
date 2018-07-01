@@ -5,8 +5,11 @@ import {
 import { Footer, FooterTab, Button, Text } from 'native-base'
 import Signin from './auth/signin'
 import Signup from './auth/signup'
-import Home from './home'
+import Solo from './solo'
+import Tour from './tournament'
+import Lead from './leaderboard'
 import Profile from './profile'
+import Ques from './questions'
 import Style from './style'
 
 const Auth = createBottomTabNavigator(
@@ -33,14 +36,44 @@ const Auth = createBottomTabNavigator(
     }
 )
 
+const Menu = createBottomTabNavigator(
+    {
+        Solo: { screen: Solo },
+        Tour: { screen: Tour },
+        Lead: { screen: Lead }
+    },
+    {
+        initialRouteName: 'Solo',
+        animationEnabled: true,
+        tabBarComponent: props => {
+            return(
+                <Footer>
+                    <FooterTab style={Style.backGreen}>
+                        <Button onPress={() => props.navigation.navigate('Solo')}>
+                            <Text style={Style.white}>Practice</Text>
+                        </Button>
+                        <Button onPress={() => props.navigation.navigate('Tour')}>
+                            <Text style={Style.white}>Tournament</Text>
+                        </Button>
+                        <Button onPress={() => props.navigation.navigate('Lead')}>
+                            <Text style={Style.white}>Leaderboard</Text>
+                        </Button>
+                    </FooterTab>
+                </Footer>
+            )
+        }
+    }
+)
+
 const Main = createStackNavigator(
     {
-        Home: { screen: Home },
-        Profile: { screen: Profile }
+        Menu: { screen: Menu },
+        Profile: { screen: Profile },
+        Ques: { screen: Ques }
     },
     {
         headerMode: 'none',
-        initialRouteName: 'Home'
+        initialRouteName: 'Menu'
     }
 )
 
